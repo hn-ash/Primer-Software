@@ -5,10 +5,12 @@ After=network-online.target ollama.service
 
 [Service]
 Type=simple
-User=root
-Group=root
-WorkingDirectory=__PROJECT_PATH__
-ExecStart= --preserv-env __PROJECT_PATH__/venv/bin/python __PROJECT_PATH__/src/primer.py
+User=ubuntu
+WorkingDirectory=/home/ubuntu/projects/Primer-Software
+Environment="PATH=/home/ubuntu/projects/Primer-Software/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="HOME=/home/ubuntu"
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/home/ubuntu/projects/Primer-Software/venv/bin/python /home/ubuntu/projects/Primer-Software/src/primer.py
 Restart=on-failure
 RestartSec=1
 
